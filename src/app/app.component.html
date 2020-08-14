@@ -4,11 +4,11 @@
     <mat-card-title>Add new To-Do Item</mat-card-title>
   </mat-card-header>
   <mat-card-content class="flex-column">
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Title:</mat-label>
       <input matInput type="text" formControlName="title">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <mat-label>Description:</mat-label>
       <textarea matInput rows="5" formControlName="description"></textarea>
     </mat-form-field>
@@ -20,7 +20,7 @@
 </mat-card>
 </form>
 
-<ng-container *ngIf="items.length != 0">
+<ng-container *ngIf="items && items.length != 0">
   <div cdkDropList (cdkDropListDropped)="itemDropped($event)">
 <mat-card cdkDrag  *ngFor="let item of items">
   <mat-card-header>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {TodoItem} from './todo-item';
 import {Observable} from 'rxjs';
@@ -10,7 +10,7 @@ import {addItem, completeItem, removeItem, reorderItems} from './actions';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'todo-ngrx';
   public items$: Observable<TodoItem[]>;
   public items: TodoItem[] = [];
@@ -27,15 +27,15 @@ export class AppComponent {
   public addItem(){
     const id = this.items.length;
     const item = {...this.form.value, id};
-    this.items.push(item);
-    console.log(this.items);
+    // this.items.push(item);
+    // console.log(this.items);
     this.store.dispatch(addItem({item}));
     this.form.reset();
   }
 
   public removeItem(id){
-    console.log(this.items);
-    this.items.splice(id);
+    // console.log(this.items);
+    // this.items.splice(id);
     this.store.dispatch(removeItem({id}));
   }
 
@@ -46,13 +46,19 @@ export class AppComponent {
   }
 
   public itemDropped(event){
-    console.log(event);
+    // console.log(event);
     const id1 = event.previousIndex;
     const id2 = event.currentIndex;
-    const item1 = this.items[id1];
-    this.items[id1] = {...this.items[id2], id: id1};
-    this.items[id2] = {...item1, id: id2};
-    console.log(this.items);
+    // const item1 = this.items[id1];
+    // this.items[id1] = {...this.items[id2], id: id1};
+    // this.items[id2] = {...item1, id: id2};
+    // console.log(this.items);
     this.store.dispatch(reorderItems({id1, id2}));
+  }
+
+  ngOnInit() {
+    this.store.select((state:any) => state.todo).subscribe(data => {
+      this.items = data.items;
+    });
   }
 }
