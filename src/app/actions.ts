@@ -2,7 +2,7 @@ import {createAction, props} from '@ngrx/store';
 import {TodoItem} from './todo-item';
 
 export const addItem = createAction('[Todo item] Add',
-  props<TodoItem>());
+  props<{item: TodoItem}>());
 
 export const removeItem = createAction('[Todo item] Remove',
   props<{id: number}>());

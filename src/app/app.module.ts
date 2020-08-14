@@ -21,7 +21,7 @@ import {todoReducer} from './reducer';
     MaterialModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({items: todoReducer}, {}),
+    StoreModule.forRoot({todo: todoReducer}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],

@@ -29,7 +29,8 @@ export class AppComponent {
     const item = {...this.form.value, id};
     this.items.push(item);
     console.log(this.items);
-    this.store.dispatch(addItem(item));
+    this.store.dispatch(addItem({item}));
+    this.form.reset();
   }
 
   public removeItem(id){
@@ -39,8 +40,8 @@ export class AppComponent {
   }
 
   public changeStatus(id){
-    this.items[id].done = !this.items[id].done;
-    console.log(this.items);
+    // this.items[id].done = !this.items[id].done;
+    // console.log(this.items);
     this.store.dispatch(completeItem({id}));
   }
 
