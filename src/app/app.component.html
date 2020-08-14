@@ -22,9 +22,9 @@
 
 <ng-container *ngIf="items && items.length != 0">
   <div cdkDropList (cdkDropListDropped)="itemDropped($event)">
-<mat-card cdkDrag  *ngFor="let item of items">
+<mat-card cdkDrag  *ngFor="let item of items; let i = index">
   <mat-card-header>
-    <mat-card-subtitle>#{{item.id + 1}}</mat-card-subtitle>
+    <mat-card-subtitle>#{{i + 1}}</mat-card-subtitle>
     <mat-card-title *ngIf="!item.done">{{item.title}}</mat-card-title>
     <mat-card-title *ngIf="item.done"><del>{{item.title}}</del></mat-card-title>
   </mat-card-header>

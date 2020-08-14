@@ -25,7 +25,8 @@ export class AppComponent implements OnInit{
   }
 
   public addItem(){
-    const id = this.items.length;
+    // TODO const id = uuid();
+    const id = Math.random();
     const item = {...this.form.value, id};
     // this.items.push(item);
     // console.log(this.items);

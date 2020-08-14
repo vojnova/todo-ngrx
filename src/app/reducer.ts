@@ -40,17 +40,11 @@ const todoReducerConst = createReducer(initialState,
     };
   }),
   on(reorderItems, (state, {id1, id2}) => {
-    const item1 = state.items.find(item => item.id === id1);
-    const item2 = state.items.find(item => item.id === id2);
-    const newItems = state.items.map(item => {
-      if (item.id === id1){
-        return {...item2, id: id1};
-      }
-      else if (item.id === id2){
-        return {...item1, id: id2};
-      }
-      return item;
-    });
+    const item1 = state.items[id1];
+    const item2 = state.items[id2];
+    let newItems = Object.assign([], state.items);
+    newItems[id1] = item2;
+    newItems[id2] = item1;
     return {
       ...state,
       items: newItems
