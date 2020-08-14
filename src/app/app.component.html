@@ -25,12 +25,10 @@
 <mat-card cdkDrag  *ngFor="let item of items; let i = index">
   <mat-card-header>
     <mat-card-subtitle>#{{i + 1}}</mat-card-subtitle>
-    <mat-card-title *ngIf="!item.done">{{item.title}}</mat-card-title>
-    <mat-card-title *ngIf="item.done"><del>{{item.title}}</del></mat-card-title>
+    <mat-card-title [ngClass]="{'strike-through': item.done}">{{item.title}}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <p *ngIf="!item.done">{{item.description}}</p>
-    <p *ngIf="item.done"><del>{{item.description}}</del></p>
+    <p [ngClass]="{'strike-through': item.done}">{{item.description}}</p>
   </mat-card-content>
   <mat-card-actions align="right">
     <button mat-icon-button color="warn" (click)="removeItem(item.id)">

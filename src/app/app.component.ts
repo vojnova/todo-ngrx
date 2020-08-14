@@ -4,6 +4,7 @@ import {TodoItem} from './todo-item';
 import {Observable} from 'rxjs';
 import {select, Store} from '@ngrx/store';
 import {addItem, completeItem, removeItem, reorderItems} from './actions';
+import {v4 as uuid} from 'uuid';
 
 @Component({
   selector: 'app-root',
@@ -25,8 +26,7 @@ export class AppComponent implements OnInit{
   }
 
   public addItem(){
-    // TODO const id = uuid();
-    const id = Math.random();
+    const id = uuid();
     const item = {...this.form.value, id};
     // this.items.push(item);
     // console.log(this.items);
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.store.select((state:any) => state.todo).subscribe(data => {
+    this.store.select((state: any) => state.todo).subscribe(data => {
       this.items = data.items;
     });
   }
