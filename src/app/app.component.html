@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+
+<mat-drawer-container class="container" autosize>
+  <mat-drawer opened="opened" #drawer class="sidenav" mode="side">
+    <a routerLink="/items"><p>Items</p></a>
+    <a routerLink="/people"><p>People</p></a>
+  </mat-drawer>
+
+  <div class="sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>

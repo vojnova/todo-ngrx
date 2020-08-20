@@ -9,7 +9,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import {TodoItemsModule} from './todo-items/todo-items.module';
+import {ItemsModule} from './items/items.module';
+import {PeopleModule} from './people/people.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import {TodoItemsModule} from './todo-items/todo-items.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    TodoItemsModule,
+    MaterialModule,
+    ItemsModule,
+    PeopleModule,
     StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],

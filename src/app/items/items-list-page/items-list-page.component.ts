@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {TodoItem} from '../../todo-item';
+import {TodoItem} from '../../models/todo-item';
 import {FormControl, FormGroup} from '@angular/forms';
 import {select, Store} from '@ngrx/store';
-import {addItem, removeItem, completeItem, reorderItems} from '../todo-actions';
+import {addItem, removeItem, completeItem, reorderItems} from '../items.actions';
 import {v4 as uuid} from 'uuid';
 
 @Component({

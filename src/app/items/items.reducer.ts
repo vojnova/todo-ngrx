@@ -1,6 +1,6 @@
-import {TodoItem} from '../todo-item';
+import {TodoItem} from '../models/todo-item';
 import {createReducer, on} from '@ngrx/store';
-import {addItem, completeItem, removeItem, reorderItems} from './todo-actions';
+import {addItem, completeItem, removeItem, reorderItems} from './items.actions';
 
 export interface ItemsState {
   items: TodoItem[];
@@ -10,7 +10,7 @@ export const initialState: ItemsState = {
   items: []
 };
 
-const todoReducerConst = createReducer(initialState,
+const itemsReducerConst = createReducer(initialState,
   on(addItem, (state, {item}) => {
     const newItems = Object.assign([], state.items);
     newItems.push(item);
@@ -42,7 +42,7 @@ const todoReducerConst = createReducer(initialState,
   on(reorderItems, (state, {id1, id2}) => {
     const item1 = state.items[id1];
     const item2 = state.items[id2];
-    let newItems = Object.assign([], state.items);
+    const newItems = Object.assign([], state.items);
     newItems[id1] = item2;
     newItems[id2] = item1;
     return {
@@ -52,6 +52,6 @@ const todoReducerConst = createReducer(initialState,
   })
 );
 
-export function todoReducer(state, action){
-  return todoReducerConst(state, action);
+export function itemsReducer(state, action){
+  return itemsReducerConst(state, action);
 }

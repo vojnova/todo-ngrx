@@ -1,0 +1,13 @@
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card {
+  width: 500px;
+  margin-top: 5px;
+}
+
+.strike-through{
+  text-decoration: line-through;
+}

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ItemsListPageComponent } from './items-list-page/items-list-page.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
-import {todoReducer} from './todo-reducer';
+import {itemsReducer} from './items.reducer';
 import {MaterialModule} from '../material/material.module';
 
 
@@ -14,7 +14,7 @@ import {MaterialModule} from '../material/material.module';
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
-    StoreModule.forFeature('items', todoReducer)
+    StoreModule.forFeature('items', itemsReducer)
   ]
 })
-export class TodoItemsModule { }
+export class ItemsModule { }
