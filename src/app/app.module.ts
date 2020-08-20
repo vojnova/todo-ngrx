@@ -9,7 +9,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
-import {todoReducer} from './reducer';
+import {TodoItemsModule} from './todo-items/todo-items.module';
 
 @NgModule({
   declarations: [
@@ -18,10 +18,9 @@ import {todoReducer} from './reducer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MaterialModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    StoreModule.forRoot({todo: todoReducer}, {}),
+    TodoItemsModule,
+    StoreModule.forRoot({}, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],

@@ -1,6 +1,6 @@
-import {TodoItem} from './todo-item';
+import {TodoItem} from '../todo-item';
 import {createReducer, on} from '@ngrx/store';
-import {addItem, completeItem, removeItem, reorderItems} from './actions';
+import {addItem, completeItem, removeItem, reorderItems} from './todo-actions';
 
 export interface ItemsState {
   items: TodoItem[];
