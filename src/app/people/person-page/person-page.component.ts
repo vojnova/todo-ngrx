@@ -29,12 +29,10 @@ export class PersonPageComponent implements OnInit {
       if (!this.person){
         this.router.navigateByUrl('/people');
       }
-      console.log(this.person);
     });
 
     this.store.pipe(select(selectItemsByPerson, {id: this.personId})).subscribe(items => {
       this.items = items;
-      console.log(this.items);
     });
   }
 

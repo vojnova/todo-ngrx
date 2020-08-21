@@ -1,8 +1,14 @@
 
 <mat-drawer-container class="container" autosize>
   <mat-drawer opened="opened" #drawer class="sidenav" mode="side">
-    <a routerLink="/people"><p>People</p></a>
-    <a routerLink="/items"><p>Items</p></a>
+    <div class="flex-column">
+      <button mat-icon-button routerLink="/people">
+        <mat-icon>people</mat-icon>
+      </button>
+      <button mat-icon-button routerLink="/items">
+        <mat-icon>assignment</mat-icon>
+      </button>
+    </div>
   </mat-drawer>
 
   <div class="sidenav-content">

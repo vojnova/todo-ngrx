@@ -32,9 +32,6 @@ export const selectAllItems = createSelector(
 export const selectPerson = createSelector(
   allPeople,
   (people, props) => {
-    console.log('in state');
-    console.log(people);
-    console.log(props);
     return people.find((person) => person.id === props.id);
   });
 
@@ -43,4 +40,4 @@ export const selectItemsByPerson = createSelector(
   (items, props) => {
     return items.filter((item) => item.assignee === props.id);
   }
-)
+);

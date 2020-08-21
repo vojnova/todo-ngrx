@@ -1,5 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {TodoItem} from '../../models/todo-item';
+import {select, Store} from '@ngrx/store';
+import {selectPerson} from '../../app.state';
+import {Person} from '../../models/person';
 
 @Component({
   selector: 'app-item',
@@ -15,7 +18,9 @@ export class ItemComponent implements OnInit {
 
   @Output() changeStatus = new EventEmitter();
 
-  constructor() { }
+  public assignee: Person;
+
+  constructor(private store: Store) { }
 
   onremoveItem(){
     this.removeItem.emit(this.item.id);
@@ -26,6 +31,9 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.store.pipe(select(selectPerson, {id: this.item.assignee})).subscribe(person => {
+      this.assignee = person;
+    });
   }
 
 }

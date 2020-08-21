@@ -26,14 +26,12 @@ const itemsReducerConst = createReducer(initialState,
     };
   } ),
   on(completeItem, (state, {id}) => {
-    console.log('in complete item');
     const newItems = state.items.map(item => {
       if (item.id === id){
         return {...item, done: !item.done};
       }
       return item;
     });
-    console.log(newItems);
     return {
       ...state,
       items: newItems
