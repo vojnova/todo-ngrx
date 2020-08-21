@@ -6,7 +6,7 @@ import {PersonPageComponent} from './people/person-page/person-page.component';
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/items', pathMatch: 'full'},
+  {path: '', redirectTo: '/people', pathMatch: 'full'},
   {path: 'items', component: ItemsListPageComponent},
   {path: 'people/:id', component: PersonPageComponent},
   {path: 'people', component: PeopleListPageComponent}

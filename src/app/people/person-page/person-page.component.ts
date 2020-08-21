@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Person} from '../../models/person';
 import {ActivatedRoute, Router} from '@angular/router';
-import {selectPerson} from '../people.state';
+import {selectItemsByPerson, selectPerson} from '../../app.state';
+import {TodoItem} from '../../models/todo-item';
 
 @Component({
   selector: 'app-person-page',
@@ -12,6 +13,7 @@ import {selectPerson} from '../people.state';
 export class PersonPageComponent implements OnInit {
   private personId;
   public person: Person;
+  public items: TodoItem[];
 
   constructor(private activatedRoute: ActivatedRoute, private store: Store, private router: Router) {
     this.activatedRoute.paramMap.subscribe(params => {
@@ -22,13 +24,18 @@ export class PersonPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.pipe(select(selectPerson, {id: this.personId})).subscribe(data => {
-      this.person = data;
+    this.store.pipe(select(selectPerson, {id: this.personId})).subscribe(person => {
+      this.person = person;
       if (!this.person){
         this.router.navigateByUrl('/people');
       }
+      console.log(this.person);
     });
-    console.log(this.person);
+
+    this.store.pipe(select(selectItemsByPerson, {id: this.personId})).subscribe(items => {
+      this.items = items;
+      console.log(this.items);
+    });
   }
 
 }

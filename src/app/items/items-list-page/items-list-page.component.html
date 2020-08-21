@@ -12,6 +12,12 @@
         <mat-label>Description:</mat-label>
         <textarea matInput rows="5" formControlName="description"></textarea>
       </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Assign to:</mat-label>
+        <select matNativeControl formControlName="assignee">
+          <option *ngFor="let person of people" value="{{person.id}}">{{person.name}} {{person.surname}}</option>
+        </select>
+      </mat-form-field>
     </mat-card-content>
     <mat-card-actions align="right">
       <button type="submit" mat-raised-button color="accent">Add</button>

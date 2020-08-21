@@ -6,6 +6,7 @@ import {v4 as uuid} from 'uuid';
 import {Person} from '../../models/person';
 import {addPerson, editPerson, removePerson} from '../people.actions';
 import {ActivatedRoute} from '@angular/router';
+import {selectAllPeople} from '../../app.state';
 
 @Component({
   selector: 'app-people-list-page',
@@ -13,7 +14,6 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./people-list-page.component.scss']
 })
 export class PeopleListPageComponent implements OnInit {
-  public people$: Observable<Person[]>;
   public people: Person[] = [];
   public addForm = new FormGroup(
     {name: new FormControl(''),
@@ -26,9 +26,8 @@ export class PeopleListPageComponent implements OnInit {
   private personId;
   public isEditing = false;
 
-  constructor(private store: Store<{people: Person[]}>,
+  constructor(private store: Store,
               private activatedRoute: ActivatedRoute) {
-    this.people$ = store.pipe(select('people'));
     activatedRoute.paramMap.subscribe(params => {
       if (params.get('id')){
         this.personId = params.get('id');
@@ -53,8 +52,8 @@ export class PeopleListPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.select((state: any) => state.people).subscribe(data => {
-      this.people = data.people;
+    this.store.pipe(select(selectAllPeople)).subscribe(people => {
+      this.people = people;
     });
   }
 

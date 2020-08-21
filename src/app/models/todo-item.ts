@@ -5,5 +5,5 @@ export interface TodoItem {
   title?: string;
   description?: string;
   done?: boolean;
-  person?: Person;
+  assignee?: Person;
 }
