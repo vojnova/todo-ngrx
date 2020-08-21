@@ -5,16 +5,21 @@ import {MaterialModule} from '../material/material.module';
 import {StoreModule} from '@ngrx/store';
 import {peopleReducer} from './people.reducer';
 import {ReactiveFormsModule} from '@angular/forms';
+import {RouterModule} from '@angular/router';
+import { PersonPageComponent } from './person-page/person-page.component';
+import {ItemsModule} from '../items/items.module';
 
 
 
 @NgModule({
-  declarations: [PeopleListPageComponent],
+  declarations: [PeopleListPageComponent, PersonPageComponent],
   imports: [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
-    StoreModule.forFeature('people', peopleReducer)
+    StoreModule.forFeature('people', peopleReducer),
+    RouterModule,
+    ItemsModule
   ]
 })
 export class PeopleModule { }

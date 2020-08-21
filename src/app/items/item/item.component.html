@@ -1,0 +1,18 @@
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle>#{{index}}</mat-card-subtitle>
+        <mat-card-title [ngClass]="{'strike-through': item.done}">{{item.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p [ngClass]="{'strike-through': item.done}">{{item.description}}</p>
+      </mat-card-content>
+      <mat-card-actions align="right">
+        <button mat-icon-button color="warn" (click)="onremoveItem()">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" (click)="onchangeStatus()">
+          <mat-icon *ngIf="!item.done">done</mat-icon>
+          <mat-icon *ngIf="item.done" color="warn">clear</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>

@@ -5,16 +5,20 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {StoreModule} from '@ngrx/store';
 import {itemsReducer} from './items.reducer';
 import {MaterialModule} from '../material/material.module';
+import { ItemComponent } from './item/item.component';
 
 
 
 @NgModule({
-  declarations: [ItemsListPageComponent],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    StoreModule.forFeature('items', itemsReducer)
-  ]
+    declarations: [ItemsListPageComponent, ItemComponent],
+    exports: [
+        ItemComponent
+    ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        StoreModule.forFeature('items', itemsReducer)
+    ]
 })
 export class ItemsModule { }

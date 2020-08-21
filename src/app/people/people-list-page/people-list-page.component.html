@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="addPerson()">
+<form [formGroup]="addForm" (ngSubmit)="addPerson()">
   <mat-card>
     <mat-card-header>
       <mat-card-title>Add new Person</mat-card-title>
@@ -26,11 +26,17 @@
 <ng-container *ngIf="people && people.length != 0">
   <mat-card cdkDrag *ngFor="let person of people">
     <mat-card-header>
-      <mat-card-title>{{person.name + ' ' + person.surname}}</mat-card-title>
+      <mat-card-title>
+        <p>{{person.name}}</p>
+        <p>{{person.surname}}</p>
+      </mat-card-title>
     </mat-card-header>
     <mat-card-content>
     </mat-card-content>
     <mat-card-actions align="right">
+      <button type="submit" mat-icon-button color="accent" routerLink="/people/{{person.id}}">
+        <mat-icon>info</mat-icon>
+      </button>
       <button mat-icon-button color="warn" (click)="removePerson(person.id)">
         <mat-icon>delete</mat-icon>
       </button>

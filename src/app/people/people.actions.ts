@@ -6,3 +6,6 @@ export const addPerson = createAction('[Person] Add',
 
 export const removePerson = createAction('[Person] Remove',
   props<{id: string}>());
+
+export const editPerson = createAction('[Person] Add',
+  props<{id: string, changes: Person}>());

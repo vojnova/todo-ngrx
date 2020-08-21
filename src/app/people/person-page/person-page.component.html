@@ -1,0 +1,2 @@
+<h1>{{person.name}} {{person.surname}}</h1>
+<app-item *ngFor="let item of person.items; let i = index" [item]="item" [index]="i+1"></app-item>
